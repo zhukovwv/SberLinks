@@ -43,6 +43,6 @@ pre-commit run --all-files
 ### 6. Running tests
 
 ```bash
-# Note, it will use second database declared in docker-compose.yml, not default one
+# Note, it will use second database declared in docker-compose.yml, not default one. Not working now :(
 pytest                                                                    
 ```
