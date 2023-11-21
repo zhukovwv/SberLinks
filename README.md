@@ -8,22 +8,16 @@ source venv/bin/activate
 pip install -r requirements-dev.txt
 ```
 
-### 2. Setup databases
+### 2. Database + Webserver (under http, for testing setup on localhost:8000)
 
 ```bash
-### Setup two databases, one db for test
 docker-compose up -d
-
-### Alembic migrations upgrade
-bash init.sh
 ```
 
-### 3. Now you can run app
+### 3. Now you can test app
 
 ```bash
-
-uvicorn app.main:app --reload
-
+http://localhost:8000/
 ```
 
 ### 5. Activate pre-commit

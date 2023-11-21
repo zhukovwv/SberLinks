@@ -15,8 +15,7 @@ alembic upgrade head
 """
 
 from sqlalchemy.orm import DeclarativeBase
-from sqlalchemy import Column, Integer, String, DateTime, Text
-from sqlalchemy.sql import func
+from sqlalchemy import Column, Integer, String
 
 
 class Base(DeclarativeBase):
