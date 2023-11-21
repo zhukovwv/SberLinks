@@ -1,21 +1,20 @@
-from fastapi import APIRouter, Depends, HTTPException, Query
-from sqlalchemy.ext.asyncio import AsyncSession
-from typing import Dict
 import time
+from typing import Optional
+
+from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy import select
+from sqlalchemy.ext.asyncio import AsyncSession
 from starlette.responses import JSONResponse
 
 from app.api import deps
 from app.models import Link
-from typing import Optional
-
 
 router = APIRouter()
 
 
 @router.post("/visited_links")
 async def visited_links(
-    links: Dict,
+    links: dict,
     session: AsyncSession = Depends(deps.get_session),
 ):
     current_time_seconds = int(time.time())
@@ -36,9 +35,11 @@ async def visited_links(
 
 @router.get("/visited_links")
 async def visited_links(
-        from_time: Optional[int] = Query(None, title="From Time", description="Unix timestamp"),
-        to_time: Optional[int] = Query(None, title="To Time", description="Unix timestamp"),
-        session: AsyncSession = Depends(deps.get_session),
+    from_time: Optional[int] = Query(
+        None, title="From Time", description="Unix timestamp"
+    ),
+    to_time: Optional[int] = Query(None, title="To Time", description="Unix timestamp"),
+    session: AsyncSession = Depends(deps.get_session),
 ):
     try:
         stmt = select(Link.url).distinct()

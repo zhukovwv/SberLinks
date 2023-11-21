@@ -14,8 +14,8 @@ alembic revision --autogenerate -m "migration_name"
 alembic upgrade head
 """
 
-from sqlalchemy.orm import DeclarativeBase
 from sqlalchemy import Column, Integer, String
+from sqlalchemy.orm import DeclarativeBase
 
 
 class Base(DeclarativeBase):
@@ -23,7 +23,7 @@ class Base(DeclarativeBase):
 
 
 class Link(Base):
-    __tablename__ = 'links'
+    __tablename__ = "links"
 
     id = Column(Integer, primary_key=True)
     url = Column(String(255), nullable=False)
